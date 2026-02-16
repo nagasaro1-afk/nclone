@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+      
+<header class="navbar">
+      <div class="logo">
+      <img src="cinesync.html.png" alt="cinesync logo">
+      </div>
+</header>
+<main>
+<div class="image-modal" id="imageModal">
+    <span class="close-btn" onclick="closeModal()">✖</span>
+    <img id="modalImage">
+</div>
+
+      <div class="navbar">
+    <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">Movies</a>
+        <a href="#">TV Shows</a>
+        <a href="#">My List</a>
+    </div>
+    <div class="profile">
+        <img src="https://i.pravatar.cc/40">
+    </div>
+</div>
+      <section class="hero">
+            <div class="overlay"></div>
+            <div class="hero-content">
+                  <h1>stranger things</h1>
+                  <p>
+                  When a young boy disappears, his mother, a police chief,
+      and his friends must confront terrifying supernatural forces.
+      </p>
+      <div class="buttons">
+      <button class="play-btn">▶ Play</button>
+      <button class="list-btn">+ My List</button>
+    </div>
+  </div>
+           
+      </section>
+      <section class="hero">
+
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube.com/embed/b9EkMc79ZSU?autoplay=1&mute=1&controls=0&loop=1&playlist=b9EkMc79ZSU"
+            frameborder="0"
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+
+</section>
+
+
+<section class="row">
+    <h2>Trending Now</h2>
+    <div class="row-posters">
+        <img src="dune.png" class="poster">
+        <img src="johnwick.png" class="poster">
+        <img src="avatar.jpg" class="poster">
+        <img src="beautyin black.jpg" class="poster">
+        <img src="martysupreme.jpg" class="poster">
+<img src="Straw.jpg" class="poster">
+<img src="Sinners (2025).jpg" class="poster">
+<img src="https://picsum.photos/300/160?5" class="poster">
+
+
+
+    </div>
+</section>
+
+<section class="row">
+    <h2>Popular</h2>
+    <div class="row-posters">
+        <img src="https://picsum.photos/300/160?6" class="poster">
+        <img src="https://picsum.photos/300/160?7" class="poster">
+        <img src="https://picsum.photos/300/160?8" class="poster">
+        <img src="https://picsum.photos/300/160?9" class="poster">
+        <img src="https://picsum.photos/300/160?10" class="poster">
+    </div>
+</section>
+
+<section class="row">
+    <h2>Action Movies</h2>
+    <div class="row-posters">
+        <img src="https://picsum.photos/300/160?11" class="poster">
+        <img src="https://picsum.photos/300/160?12" class="poster">
+        <img src="https://picsum.photos/300/160?13" class="poster">
+        <img src="https://picsum.photos/300/160?14" class="poster">
+        <img src="https://picsum.photos/300/160?15" class="poster">
+    </div>
+
+<input type="text" id="searchBar" placeholder="Search movies..." onkeyup="filterMovies()">
+
+</main>
+</body>
+<script>
+const modal = document.getElementById("imageModal");
+const modalImage = document.getElementById("modalImage");
+
+
+const posters = document.querySelectorAll(".poster");
+posters.forEach(poster => {
+    poster.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImage.src = poster.src;
+    });
+});
+
+
+function closeModal() {
+    modal.style.display = "none";
+}
+
+function filterMovies() {
+    const input = document.getElementById("searchBar").value.toLowerCase();
+    const rows = document.querySelectorAll(".row-posters");
+
+    rows.forEach(row => {
+        const posters = row.querySelectorAll(".poster");
+        posters.forEach(poster => {
+            const altText = poster.alt ? poster.alt.toLowerCase() : "";
+            const srcText = poster.src.toLowerCase();
+            
+            if (altText.includes(input) || srcText.includes(input)) {
+                poster.style.display = "inline-block";
+            } else {
+                poster.style.display = "none";
+            }
+        });
+    });
+}
+</script>
+
+</html>
